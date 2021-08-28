@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html {
+  min-width: 100vh;
+}
+body {
+  background-color: #000;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.bg-black {
+  background-color: #000;
+}
+/* btn */
+.btn-black {
+  background-color: #000;
+  color: #fff;
+}
+.btn-black:hover {
+  background-color: #000;
+  color: #fff;
+}
+.btn-black:not(:focus-visible) {
+  box-shadow: none;
+}
+
+/* Customs Button */
+.custom-btn-facebook {
+  background-color: #0a58ca;
+  border-color: #0a58ca;
+  color: #fff;
+}
+.custom-btn-google {
+  background-color: #fff;
+  border-color: rgb(223, 222, 222);
+  color: #000;
+}
+
+.custom-btn-primary {
+  background-color: #fed941;
+  border-color: #fed941;
+  color: #000;
+}
+
+.custom-btn-dark {
+  background-color: #000;
+  border-color: #fed941;
+  color: #fed941;
+}
+.custom-btn {
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+/* SearchBar */
+.search {
+  height: 31px;
+  width: 533.19px;
+  border-radius: 4px;
+  border: 0.5px solid #fed941;
+  margin: 0 5px;
+}
+
+.search button {
+  height: 30px;
+  text-align: center;
+  width: 72px;
+  border-radius: 0px 2px 2px 0px;
+  background-color: #fed941;
+  margin: 0;
+  border: none;
+}
+
+.search input {
+  width: 100%;
+  height: 30px;
+  border-radius: 2px 0px 0px 2px;
+}
+
+/* modifiers */
+.bold {
+  font-weight: bold;
+}
+
+/* rate */
+.rate {
+  background-color: #0000007a;
+  position: absolute;
+  width: 70px;
+  margin-top: -300px;
+  font-size: 24px;
+  text-align: right;
+  font-weight: bold;
+  border-radius: 0 20px 20px 0;
+  padding: 0px 10px 0px 0px;
+}
+
+.top-rate {
+  border-bottom: 1.5px solid #fed941;
+  border-top: 1.5px solid #fed941;
+  border-right: 1.5px solid #fed941;
+}
+.least-rate {
+  border-bottom: 1.5px solid #0e3fa9;
+  border-top: 1.5px solid #0e3fa9;
+  border-right: 1.5px solid #0e3fa9;
+}
+
+.rate span img {
+  width: 20px;
+  margin-right: 5px;
+}
