@@ -1,24 +1,29 @@
 import { types } from "../types/types";
-// import { search, getMovies } from "../helpers/apiConnect";
+import Movies from "../../services/movies";
 
-export const findMovies = () => {
+const selectMovie = (movie) => {
   return (dispatch) => {
-    // getMovies().then((data) => {
-    //   dispatch({
-    //     type: types.movies,  
-    //     payload: {
-    //       results: data
-    //     }
-    //   });
-    // });
+    dispatch({
+      type: types.movie,
+      payload: movie,
+    });
+  };
+};
+const getMovies = () => {
+  return async (dispatch) => {
+    const movies = await Movies.findAll();
+    dispatch({
+      type: types.movieList,
+      payload: movies,
+    });
   };
 };
 
-export const searchMovies = (name) => {
+const searchMovies = (name) => {
   return (dispatch) => {
     // search(name).then((data) => {
     //   dispatch({
-    //     type: types.moviesSearch,  
+    //     type: types.moviesSearch,
     //     payload: {
     //       results: data
     //     }
@@ -26,3 +31,10 @@ export const searchMovies = (name) => {
     // });
   };
 };
+const getMovieById = (id)=> {
+  return async (dispatch) => {
+    const movie = await Movies.findById(id)
+    dispatch(selectMovie(movie))
+  };
+}
+export { getMovies, searchMovies, selectMovie , getMovieById};

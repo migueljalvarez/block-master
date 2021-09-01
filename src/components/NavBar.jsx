@@ -3,13 +3,12 @@ import { Navbar, Container, Dropdown, Nav } from "react-bootstrap";
 import logo from "../assets/svg/logo-blockBuster.svg";
 import menu from "../helpers/menu";
 import { Link, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 // import { BiDoorOpen, BiX } from "react-icons/bi";
 // import { FaBars } from "react-icons/fa";
-import { useDispatch } from "react-redux";
 // import { logout } from "../redux/actions";
 // import ResposiveMenu from "./ResposiveMenu";
-import { searchMovies, findMovies } from "../redux/actions/moviesActions";
+import { searchMovies, getMovies } from "../redux/actions/moviesActions";
 import SearchBar from "./SearchBar";
 
 const NavBar = () => {
@@ -28,15 +27,16 @@ const NavBar = () => {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     if (e.target.value.length < 1) {
-      dispatch(findMovies());
+      dispatch(getMovies());
     } else {
       dispatch(searchMovies(e.target.value));
     }
   };
+
   const DefaultMenu = () => {
     return menu.map((item, index) => (
       <Link
-        className="text-white bold text-decoration-none m-2"
+        className="text-white bold text-decoration-none mx-4"
         key={index}
         to={item.path}
       >
@@ -67,8 +67,9 @@ const NavBar = () => {
       </>
     );
   };
+
   return (
-    <div className="d-flex w-100 bg-aqua justify-content-around">
+    <Container className="d-flex w-100">
       <Navbar id="nav-contarner-main" bg="black" className="">
         {/* <span
           id="toggle-menu"
@@ -114,7 +115,7 @@ const NavBar = () => {
           </Dropdown.Menu>
         </Dropdown>
       </Navbar>
-      
+
       {/* <ResposiveMenu
         user={user}
         isShow={isShowMenu}
@@ -122,7 +123,7 @@ const NavBar = () => {
         handleLogout={handleLogout}
         handleToggleMenu={handleToggleMenu}
       /> */}
-    </div>
+    </Container>
   );
 };
 

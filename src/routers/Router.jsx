@@ -33,7 +33,7 @@ const Routers = () => {
         <NavBar />
         <Switch>
           <PublicRouter exact path="/login" component={Login} />
-          <Route exact path="/all" component={AllMovies} />
+          <Route exact path="/" component={AllMovies} />
           <Redirect to="/" />
         </Switch>
         <Footer />

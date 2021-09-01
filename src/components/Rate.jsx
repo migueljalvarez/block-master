@@ -7,7 +7,7 @@ const Rate = ({ rate }) => {
         <span>
           <img src={star} alt="rate"/>
         </span>
-        {rate}
+        {rate.toFixed(1)}
       </div>
     </div>
   );

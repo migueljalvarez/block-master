@@ -1,5 +1,8 @@
 export const types = {
-  login: "login",
-  logout: "logout",
-  signup: "signup",
+  login: "[Auth] Login ",
+  logout: "[Auth] Logout",
+  signup: "[Auth] Sign Up",
+  bannerList: "[Banner] List",
+  movieList: "[Movies] List",
+  movie: "[Movie] Current",
 };

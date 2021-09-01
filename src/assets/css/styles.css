@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 html {
-  min-width: 100vh;
+  min-height: 100vh;
+  position: relative;
 }
 body {
+  min-height: 100vh;
   background-color: #000;
   font-family: "Montserrat", sans-serif;
   color: #fff;
+  margin: 0;
+  margin-bottom: 40px;
 }
 footer {
   position: absolute;
@@ -14,7 +18,7 @@ footer {
   width: 100%;
 }
 .bg-black {
-  background-color: #000;
+  background-color: #0f0e17;
 }
 /* btn */
 .btn-black {
@@ -30,6 +34,9 @@ footer {
 }
 
 /* Customs Button */
+.custom-border-line-primary {
+  border: 0.5px solid #fed941 !important;
+}
 .custom-btn-facebook {
   background-color: #0a58ca;
   border-color: #0a58ca;
@@ -69,7 +76,7 @@ footer {
 /* SearchBar */
 .search {
   height: 31px;
-  width: 533.19px;
+  width: 310px;
   border-radius: 4px;
   border: 0.5px solid #fed941;
   margin: 0 5px;
@@ -100,27 +107,38 @@ footer {
 .rate {
   background-color: #0000007a;
   position: absolute;
-  width: 70px;
+  width: 100px;
+  height: 50px;
   margin-top: -300px;
   font-size: 24px;
-  text-align: right;
-  font-weight: bold;
-  border-radius: 0 20px 20px 0;
+  font-weight: 700;
+  border-radius: 0 25px 25px 0;
   padding: 0px 10px 0px 0px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .top-rate {
-  border-bottom: 1.5px solid #fed941;
-  border-top: 1.5px solid #fed941;
-  border-right: 1.5px solid #fed941;
+  border-bottom: 3.5px solid #fed941a1;
+  border-top: 3.5px solid #fed941a1;
+  border-right: 3.5px solid #fed941a1;
 }
 .least-rate {
-  border-bottom: 1.5px solid #0e3fa9;
-  border-top: 1.5px solid #0e3fa9;
-  border-right: 1.5px solid #0e3fa9;
+  border-bottom: 3.5px solid #0e3fa9a1;
+  border-top: 3.5px solid #0e3fa9a1;
+  border-right: 3.5px solid #0e3fa9a1;
 }
 
 .rate span img {
   width: 20px;
   margin-right: 5px;
+  vertical-align: baseline;
+}
+
+.modal-backdrop.show {
+  opacity: 0.9 !important;
+}
+.modal-content {
+  background-color: transparent !important;
 }
