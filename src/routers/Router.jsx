@@ -10,11 +10,14 @@ import { PublicRouter } from "./PublicRouter";
 import { firebase } from "../config/firebase/firebaseConfig";
 import { login } from "../redux/actions/authActions";
 
-import Login from "../views/Login";
+// components
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
+
+// views
+import Login from "../views/Login";
 import AllMovies from "../views/AllMovies";
-// import Pokemons from "../pages/Pokemons";
+import SignUp from "../views/SignUp";
 
 const Routers = () => {
   const dispatch = useDispatch();
@@ -33,6 +36,7 @@ const Routers = () => {
         <NavBar />
         <Switch>
           <PublicRouter exact path="/login" component={Login} />
+          <PublicRouter exact path="/signup" component={SignUp} />
           <Route exact path="/" component={AllMovies} />
           <Redirect to="/" />
         </Switch>

@@ -5,7 +5,6 @@ html {
   position: relative;
 }
 body {
-  min-height: 100vh;
   background-color: #000;
   font-family: "Montserrat", sans-serif;
   color: #fff;
@@ -17,6 +16,7 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
 .bg-black {
   background-color: #0f0e17;
 }
@@ -32,10 +32,17 @@ footer {
 .btn-black:not(:focus-visible) {
   box-shadow: none;
 }
+.custom-text-primary {
+  color: #fed941;
+}
 
 /* Customs Button */
 .custom-border-line-primary {
   border: 0.5px solid #fed941 !important;
+}
+
+.custom-btn-lg {
+  width: 100%;
 }
 .custom-btn-facebook {
   background-color: #0a58ca;
@@ -141,4 +148,33 @@ footer {
 }
 .modal-content {
   background-color: transparent !important;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+/* To show the lines on right 
+and left sides of the text */
+.divider::before {
+  margin-right: 5px;
+}
+.divider::after {
+  margin-left: 5px;
+}
+.divider::after,
+.divider::before {
+  content: "";
+  border-top: 1px solid currentColor;
+  flex: 1;
+  /* border: none; */
+  opacity: 0.25;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  color: #1e2125 !important;
+  background-color: #fed941 !important;
 }

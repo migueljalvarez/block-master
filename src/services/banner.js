@@ -11,4 +11,5 @@ const findAll = async () => {
   });
   return list;
 };
-export default { findAll };
+const Banner = { findAll };
+export default Banner;

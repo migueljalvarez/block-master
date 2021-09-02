@@ -2,6 +2,7 @@ import React from "react";
 
 const CustomButton = ({
   custom = "default",
+  type = "button",
   size,
   onClick,
   value,
@@ -10,11 +11,12 @@ const CustomButton = ({
   iconClassName,
   margin,
   borderColor,
-  className
+  className,
 }) => {
   return (
     <>
       <button
+        type={type}
         className={`${className} custom-btn custom-btn-${custom} custom-btn-${size} custom-border-line-${borderColor}`}
         onClick={onClick}
         style={{
@@ -22,7 +24,6 @@ const CustomButton = ({
           justifyContent: "center",
           alignItems: "center",
           margin,
-
         }}
       >
         {Icon ? <Icon size={iconSize} className={iconClassName} /> : <></>}

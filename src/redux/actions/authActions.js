@@ -1,7 +1,14 @@
 import { types } from "../types/types";
-import { firebase, google, facebook } from "../../config/firebase/firebaseConfig";
+import {
+  firebase,
+  google,
+  facebook,
+} from "../../config/firebase/firebaseConfig";
 
-export const login = (user) => {
+import Swal from "sweetalert2";
+import { startLoading, finishLoading } from "./uiErrors";
+
+const login = (user) => {
   return {
     type: types.login,
     payload: {
@@ -13,7 +20,7 @@ export const login = (user) => {
   };
 };
 
-export const logout = () => {
+const logout = () => {
   return (dispatch) => {
     firebase
       .auth()
@@ -21,8 +28,7 @@ export const logout = () => {
       .then(() => {
         dispatch({
           type: types.logout,
-          payload: {
-          }
+          payload: {},
         });
       })
       .catch((err) => {
@@ -31,7 +37,7 @@ export const logout = () => {
   };
 };
 
-export const loginGoogle = () => {
+const loginGoogle = () => {
   return (dispatch) => {
     firebase
       .auth()
@@ -42,7 +48,7 @@ export const loginGoogle = () => {
   };
 };
 
-export const loginFacebook = () => {
+const loginFacebook = () => {
   return (dispatch) => {
     firebase
       .auth()
@@ -53,3 +59,62 @@ export const loginFacebook = () => {
   };
 };
 
+const loginEmailPassword = (email, password) => {
+  return (dispatch) => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        dispatch(startLoading());
+        dispatch(login(user));
+        console.log("Bienvenid@");
+      })
+      .catch((e) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: e.message,
+          footer: "",
+        });
+      });
+  };
+};
+
+const registerEmailPasswordName = (email, pass, name) => {
+  return (dispatch) => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, pass)
+      .then(async ({ user }) => {
+        await user.updateProfile({ displayName: name });
+
+        dispatch(login(user));
+
+        Swal.fire({
+          position: "center",
+          text: "Registro Exitoso",
+          icon: "success",
+          title: user.displayName,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((e) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: e.message,
+          footer: "",
+        });
+      });
+  };
+};
+
+export {
+  login,
+  loginEmailPassword,
+  loginFacebook,
+  loginGoogle,
+  logout,
+  registerEmailPasswordName,
+};

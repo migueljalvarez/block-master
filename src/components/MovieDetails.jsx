@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CustomButton from "../components/CustomButton";
 import { FaPlay, FaPlus } from "react-icons/fa";
-import { Modal, Button, Container } from "react-bootstrap";
+import { Modal, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { selectMovie } from "../redux/actions/moviesActions";
 
@@ -21,11 +21,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        size="lg"
-      >
+      <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Body className="d-flex">
           <Container>
             <img

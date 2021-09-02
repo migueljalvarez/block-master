@@ -3,6 +3,7 @@ import { authReducer } from "./reducers/authReducer";
 import thunk from "redux-thunk";
 import { bannerReducer } from "./reducers/bannerReducer";
 import { movieReducer, moviesReducer } from "./reducers/moviesReducer";
+import { uiReducer } from "./reducers/uiReducer";
 
 const composeEnhancers =
   (typeof window !== "undefined" &&
@@ -14,6 +15,7 @@ const reducers = combineReducers({
   banner: bannerReducer,
   movies: moviesReducer,
   movie: movieReducer,
+  ui: uiReducer,
 });
 
 export const store = createStore(

@@ -12,8 +12,9 @@ const findAll = async () => {
   return list;
 };
 
-const findById = async (id)=> {
+const findById = async (id) => {
   const movie = await db.doc(`/Movies/${id}`).get();
-  return movie.data()
-}
-export default { findAll, findById };
+  return movie.data();
+};
+const Movies = { findAll, findById };
+export default Movies;
