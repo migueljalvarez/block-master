@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { fileUpload } from "../helpers/fileUpload";
+
 const useForm = (initialState = {}) => {
   const [values, setValues] = useState(initialState);
 
@@ -12,7 +14,27 @@ const useForm = (initialState = {}) => {
       [target.name]: target.value,
     });
   };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
 
-  return [values, handleInputChange, reset];
+    fileUpload(file)
+      .then((response) => {
+        document.getElementById("image").value = response;
+
+        setValues({
+          ...values,
+          imageUrl: response,
+        });
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  const handleClickFile = (e) => {
+    document.getElementById("fileSelector").click();
+  };
+
+  return [values, handleInputChange, handleFileChange, handleClickFile, reset];
 };
 export { useForm };

@@ -11,5 +11,23 @@ const findAll = async () => {
   });
   return list;
 };
-const Banner = { findAll };
+const create = async (data) => {
+  try {
+    const banner = await db.collection("/Banner").add({
+      name: data.name,
+      imageUrl: data.imageUrl,
+      movieId: data.movieId,
+    });
+
+    const doc = await banner.get();
+    const result = {
+      id: banner.id,
+      ...doc.data(),
+    };
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+const Banner = { findAll, create };
 export default Banner;

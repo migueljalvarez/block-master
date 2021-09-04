@@ -1,15 +1,17 @@
+import constants from "../../helpers/constants";
 import { types } from "../types/types";
 
 const initialState = {
   name: "movie",
-  posterUrl:
-    "https://marketplace.canva.com/EAEXISLskrQ/2/0/1131w/canva-modern-monochromatic-movie-poster-891_5y8EPF0.jpg",
+  imageUrl: constants.DEFAULT_MOVIE_POSTER,
   rate: 0,
 };
 const stateList = [initialState];
 const moviesReducer = (state = stateList, action) => {
   switch (action.type) {
     case types.movieList:
+    case types.moviesTop:
+    case types.moviesLeast:
       return action.payload;
     default:
       return state;
@@ -19,6 +21,8 @@ const moviesReducer = (state = stateList, action) => {
 const movieReducer = (state = {}, action) => {
   switch (action.type) {
     case types.movie:
+      return action.payload;
+    case types.movieEdit:
       return action.payload;
     default:
       return state;

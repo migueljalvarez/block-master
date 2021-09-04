@@ -10,8 +10,6 @@ const AllMovies = () => {
   const dispacth = useDispatch();
   const movies = useSelector((state) => state.movies);
 
-  console.log(movies);
-
   useEffect(() => {
     dispacth(getMovies());
   }, [dispacth]);

@@ -12,6 +12,7 @@ const CustomButton = ({
   margin,
   borderColor,
   className,
+  borderRadius
 }) => {
   return (
     <>
@@ -24,6 +25,7 @@ const CustomButton = ({
           justifyContent: "center",
           alignItems: "center",
           margin,
+          borderRadius
         }}
       >
         {Icon ? <Icon size={iconSize} className={iconClassName} /> : <></>}

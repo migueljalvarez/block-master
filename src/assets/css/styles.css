@@ -169,12 +169,25 @@ and left sides of the text */
   content: "";
   border-top: 1px solid currentColor;
   flex: 1;
-  /* border: none; */
   opacity: 0.25;
 }
-
+.css-1vr111p-option {
+  color: #1e2125 !important;
+}
+.css-1vr111p-option:hover,
+.css-1vr111p-option:focus,
 .dropdown-item:focus,
 .dropdown-item:hover {
   color: #1e2125 !important;
   background-color: #fed941 !important;
+}
+
+.dropdown-menu.show {
+  display: block;
+  right: 7px !important;
+  top: 45px !important;
+}
+/* carousel */
+.alice-carousel__stage-item * {
+  line-height: normal !important;
 }

@@ -18,27 +18,26 @@ const Carousel = () => {
     dispatch(getBanners());
   }, [dispatch]);
 
-  const banner = useSelector((state) => state.banner);
+  const banner = useSelector((state) => state.banners);
 
   return (
     <div>
       <Container className="rounded">
         <AliceCarousel
           style={{
-            borderRadius:"25px"
+            borderRadius: "25px",
+            
           }}
+          width="1200"
           mouseTracking
           items={banner.map((item, index) => (
-            <div
-              key={index}
-              style={{
-                background: `url(${item.coverUrl})`,
-                backgroundPosition: "center",
-                height: "310px",
-                width: "1200px",
-              }}
-              className="align-bottom"
-            >
+            <div key={index} className="align-bottom rounded">
+              <img
+                src={item.imageUrl}
+                alt={item.name}
+                width="1200"
+                height="310"
+              />
               <div
                 className="d-flex"
                 style={{
@@ -69,7 +68,7 @@ const Carousel = () => {
               </div>
             </div>
           ))}
-          // responsive={responsive}
+          responsive={responsive}
           controlsStrategy="alternate"
           // autoPlay={true}
           disableButtonsControls={true}

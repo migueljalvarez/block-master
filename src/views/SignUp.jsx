@@ -61,11 +61,7 @@ const SignUp = () => {
     >
       <Form onSubmit={handleRegister} className="m-auto col-6">
         <h1 className="h3 mb-3 font-weight-normal">Formulario de Registro</h1>
-        {msjError ? (
-          <div className="alert alert-danger">{msjError}</div>
-        ) : (
-          <></>
-        )}
+        {msjError && <div className="alert alert-danger">{msjError}</div>}
         <Form.Group className="mb-3">
           <Form.Label>{NAME}</Form.Label>
           <Form.Control

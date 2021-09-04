@@ -18,6 +18,11 @@ import NavBar from "../components/NavBar";
 import Login from "../views/Login";
 import AllMovies from "../views/AllMovies";
 import SignUp from "../views/SignUp";
+import { PrivateRouter } from "./PrivateRouter";
+import FormLoadBanner from "../components/FormLoadBanner";
+import FormMovie from "../views/FormMovie";
+import TopRatedMovies from "../views/TopRatedMovies";
+import LeastRatedMovies from "../views/LeastRatedMovies";
 
 const Routers = () => {
   const dispatch = useDispatch();
@@ -37,6 +42,12 @@ const Routers = () => {
         <Switch>
           <PublicRouter exact path="/login" component={Login} />
           <PublicRouter exact path="/signup" component={SignUp} />
+          <PrivateRouter exact path="/banner/load" component={FormLoadBanner} />
+          <PrivateRouter exact path="/movie/add" component={FormMovie} />
+          <PrivateRouter exact path="/movie/edit/:id" component={FormMovie} />
+
+          <Route exact path="/movie/top" component={TopRatedMovies} />
+          <Route exact path="/movie/least" component={LeastRatedMovies} />
           <Route exact path="/" component={AllMovies} />
           <Redirect to="/" />
         </Switch>

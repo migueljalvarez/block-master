@@ -67,7 +67,7 @@ const loginEmailPassword = (email, password) => {
       .then(({ user }) => {
         dispatch(startLoading());
         dispatch(login(user));
-        console.log("Bienvenid@");
+        dispatch(finishLoading());
       })
       .catch((e) => {
         Swal.fire({
@@ -87,7 +87,7 @@ const registerEmailPasswordName = (email, pass, name) => {
       .createUserWithEmailAndPassword(email, pass)
       .then(async ({ user }) => {
         await user.updateProfile({ displayName: name });
-
+        user.updateProfile()
         dispatch(login(user));
 
         Swal.fire({

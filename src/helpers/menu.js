@@ -8,15 +8,23 @@ const menu = [
   },
   {
     label: "Más valoradas",
-    path: "/top",
+    path: "/movie/top",
   },
   {
     label: "Menos valoradas",
-    path: "/least",
+    path: "/movie/least",
   },
 ];
 
 const dropdownMenu = [
+  {
+    label: "Cargar Banner",
+    path: "/banner/load",
+  },
+  {
+    label: "Cargar Pelicula",
+    path: "/movie/add",
+  },
   {
     label: "Registrarse",
     path: "/signup",
