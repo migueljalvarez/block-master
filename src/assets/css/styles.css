@@ -191,3 +191,20 @@ and left sides of the text */
 .alice-carousel__stage-item * {
   line-height: normal !important;
 }
+
+.cover {
+  width: 1200px;
+  height: 310px;
+  margin: auto;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .cover {
+    width: 100%;
+    height: 200px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .cover {
+    width: 100%;
+  }
+}

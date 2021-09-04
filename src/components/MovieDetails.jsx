@@ -5,6 +5,7 @@ import { Modal, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { selectMovie } from "../redux/actions/moviesActions";
 import { useHistory } from "react-router-dom";
+import YouTube from "react-youtube";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const MovieDetails = () => {
   const handleEdit = (movie) => {
     history.push(`/movie/edit/${movie.id}`);
   };
-
+  const gender = movie.gender || [""];
   return (
     <>
       <Modal show={show} onHide={handleClose} size="lg">
@@ -65,7 +66,7 @@ const MovieDetails = () => {
             <h1>{movie?.name}</h1>
             <p>{movie?.description}</p>
             <p>
-              {movie?.year} • {movie?.gender?.join("/")} • {movie?.duration}
+              {movie?.year} • {gender.join("/")} • {movie?.duration}
             </p>
 
             <div
@@ -100,10 +101,15 @@ const MovieDetails = () => {
 
         <Container>
           <h2>Trailer</h2>
-          <iframe
-            src={`https://www.youtube.com/embed/${movie.trailerUrl
-              ?.split("=")
-              .pop()}`}
+          <YouTube
+            videoId={movie.trailerUrl?.split("=").pop()}
+            opts={{
+              height: "390",
+              width: "640",
+            }}
+          />
+          {/* <iframe
+            src={`https://www.youtube.com/embed/${}`}
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -111,6 +117,7 @@ const MovieDetails = () => {
             className="w-100"
             height="450"
           ></iframe>
+         */}
         </Container>
       </Modal>
     </>

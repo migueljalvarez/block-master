@@ -39,8 +39,8 @@ const NavBar = () => {
   }, [history]);
 
   return (
-    <Container className="d-flex w-100">
-      <Navbar id="nav-contarner-main" bg="black" className="">
+    <div className="w-100">
+      <Navbar id="nav-contarner-main" bg="black" className="container ">
         {/* <span
           id="toggle-menu"
           className="text-white bg-danger mx-4"
@@ -83,7 +83,7 @@ const NavBar = () => {
         handleLogout={handleLogout}
         handleToggleMenu={handleToggleMenu}
       /> */}
-    </Container>
+    </div>
   );
 };
 

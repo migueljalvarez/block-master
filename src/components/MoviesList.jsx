@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { useDispatch } from "react-redux";
+import constants from "../helpers/constants";
 import { selectMovie } from "../redux/actions/moviesActions";
 import Rate from "./Rate";
 
@@ -11,7 +12,7 @@ const MoviesList = memo(({ movies }) => {
   };
   
   return (
-    <div className="d-flex">
+    <div className="d-flex flex-wrap justify-content-center mb-5">
       {movies?.map((movie, index) => (
         <div
           key={index}
@@ -25,6 +26,10 @@ const MoviesList = memo(({ movies }) => {
             width="220"
             height="330"
             className="rounded"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = constants.DEFAULT_MOVIE_POSTER;
+            }}
           />
           <Rate rate={movie.rate || 0} />
         </div>

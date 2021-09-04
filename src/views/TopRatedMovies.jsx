@@ -9,8 +9,8 @@ import { getTopMovies } from "../redux/actions/moviesActions";
 const TopRatedMovies = () => {
   const dispacth = useDispatch();
   const movies = useSelector((state) => state.movies);
-  
-  console.log(movies)
+
+  console.log(movies);
 
   useEffect(() => {
     dispacth(getTopMovies());
@@ -20,10 +20,10 @@ const TopRatedMovies = () => {
     <div>
       <Carousel />
       <Container>
-        <h1 className="fw-bold">Peliculas mas valoradas</h1>
+        <h1 className="fw-bold px-4 m-4">Peliculas mas valoradas</h1>
       </Container>
       <Container className="d-flex">
-        <MoviesList movies={movies} />
+        <MoviesList movies={movies.sort((a, b) => b.rate - a.rate)} />
       </Container>
       <MovieDetails />
     </div>

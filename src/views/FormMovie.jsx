@@ -257,7 +257,8 @@ const FormMovie = () => {
             </p>
             <p>
               {year || new Date().getFullYear()} •{" "}
-              {gender?.join("/") || "example / example"} • {duration || "1h"}
+              {gender ? gender.join("/") : "example / example"} •{" "}
+              {duration || "1h"}
             </p>
           </Container>
           <Container className="w-auto">
@@ -269,18 +270,6 @@ const FormMovie = () => {
               className="rounded"
             />
           </Container>
-        </Container>
-        <Container>
-          <h2>Trailer</h2>
-          <iframe
-            src={`https://www.youtube.com/embed/${trailerUrl?.split("=").pop()}`}
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            className="w-100"
-            height="300"
-          ></iframe>
         </Container>
       </Container>
     </Container>

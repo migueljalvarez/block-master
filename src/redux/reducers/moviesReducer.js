@@ -5,6 +5,7 @@ const initialState = {
   name: "movie",
   imageUrl: constants.DEFAULT_MOVIE_POSTER,
   rate: 0,
+  gender: ["example1", "example2"]
 };
 const stateList = [initialState];
 const moviesReducer = (state = stateList, action) => {

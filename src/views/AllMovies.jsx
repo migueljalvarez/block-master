@@ -5,7 +5,7 @@ import Carousel from "../components/Carousel";
 import MovieDetails from "../components/MovieDetails";
 import MoviesList from "../components/MoviesList";
 import { getMovies } from "../redux/actions/moviesActions";
-
+// import "../scripts/bulkCreateMovies"
 const AllMovies = () => {
   const dispacth = useDispatch();
   const movies = useSelector((state) => state.movies);
@@ -13,12 +13,11 @@ const AllMovies = () => {
   useEffect(() => {
     dispacth(getMovies());
   }, [dispacth]);
-
   return (
     <div>
       <Carousel />
       <Container>
-        <h1 className="fw-bold">Todas las Peliculas</h1>
+        <h1 className="fw-bold px-4 m-4">Todas las Peliculas</h1>
       </Container>
       <Container className="d-flex">
         <MoviesList movies={movies} />

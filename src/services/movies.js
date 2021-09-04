@@ -20,7 +20,7 @@ const findMoviesByRate = async (field, op, value) => {
 const findAll = async () => {
   const movies = await db
     .collection(`/${collection}`)
-    .orderBy("year", "asc")
+    .orderBy("year", "desc")
     .limit(20)
     .get();
   const list = [];

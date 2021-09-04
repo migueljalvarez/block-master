@@ -9,6 +9,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { useDispatch, useSelector } from "react-redux";
 
 const responsive = {
+  1024: { items: 3 },
   1200: { items: 1 },
 };
 
@@ -21,29 +22,23 @@ const Carousel = () => {
   const banner = useSelector((state) => state.banners);
 
   return (
-    <div>
-      <Container className="rounded">
+    <div className="d-flex">
+      <Container className="">
         <AliceCarousel
-          style={{
-            borderRadius: "25px",
-            
-          }}
-          width="1200"
           mouseTracking
           items={banner.map((item, index) => (
-            <div key={index} className="align-bottom rounded">
+            <div key={index} className="align-bottom rounded d-flex">
               <img
+                className="cover"
                 src={item.imageUrl}
                 alt={item.name}
-                width="1200"
-                height="310"
               />
               <div
                 className="d-flex"
                 style={{
                   position: "absolute",
-                  bottom: "15px",
-                  left: "50px",
+                  bottom: "30px",
+                  left: "100px",
                 }}
               >
                 <CustomButton
@@ -53,7 +48,7 @@ const Carousel = () => {
                   Icon={FaPlay}
                   iconSize="15"
                   iconClassName="mx-1"
-                  className="text-uppercase bold"
+                  className="text-uppercase bold p-3"
                 />
                 <CustomButton
                   custom="dark"
@@ -63,12 +58,12 @@ const Carousel = () => {
                   Icon={FaPlus}
                   iconSize="15"
                   iconClassName="mx-1"
-                  className="text-uppercase bold"
+                  className="text-uppercase bold p-3"
                 />
               </div>
             </div>
           ))}
-          responsive={responsive}
+          // responsive={responsive}
           controlsStrategy="alternate"
           // autoPlay={true}
           disableButtonsControls={true}
