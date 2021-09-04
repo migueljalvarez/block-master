@@ -36,24 +36,18 @@ const FormMovie = () => {
   const { loading } = useSelector((state) => state.ui);
   const movie = useSelector((state) => state.movie);
   const [isLoading, setIsLoading] = useState(true);
-  const getCurrentMovies = () => {
-    if (param.id) {
-      dispatch(getMovieById(param.id));
-    }
-  };
+  const [values, handleInputChange, handleFileChange, handleClickFile, reset] =
+    useForm(param.id ? movie : initialState);
   useEffect(() => {
     if (isLoading) {
-      getCurrentMovies();
+      dispatch(getMovieById(param.id));
       setIsLoading(false);
     }
     if (movie.isUpdate) {
       reset();
-      getCurrentMovies();
+      dispatch(getMovieById(param.id));
     }
-  }, [dispatch, isLoading, movie.isUpdate]);
-
-  const [values, handleInputChange, handleFileChange, handleClickFile, reset] =
-    useForm(param.id ? movie : initialState);
+  }, [dispatch, isLoading, movie.isUpdate, param.id, reset]);
 
   const animatedComponents = makeAnimated();
   const {

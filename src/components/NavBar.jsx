@@ -3,7 +3,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/svg/logo-blockBuster.svg";
 import { menu } from "../helpers/menu";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { BiDoorOpen, BiX } from "react-icons/bi";
 // import { FaBars } from "react-icons/fa";
 // import ResposiveMenu from "./ResposiveMenu";
@@ -14,7 +14,7 @@ import DropDownMenu from "./DropDownMenu";
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const [isShowMenu, setIsShowMenu] = useState(false);
+  // const [isShowMenu, setIsShowMenu] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   // const handleToggleMenu = () => {
   //   setIsShowMenu(!isShowMenu);
@@ -33,7 +33,7 @@ const NavBar = () => {
   useEffect(() => {
     return history.listen((location) => {
       if (location) {
-        setIsShowMenu(false);
+        // setIsShowMenu(false);
       }
     });
   }, [history]);

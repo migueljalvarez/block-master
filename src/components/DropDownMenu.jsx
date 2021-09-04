@@ -58,6 +58,7 @@ const DropDownMenu = () => {
         </Dropdown.Item>
       );
     }
+    return item;
   });
 
   return (

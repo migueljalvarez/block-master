@@ -25,7 +25,7 @@ const MovieDetails = () => {
         setShow(false);
       }
     });
-  }, [movie.name]);
+  }, [movie.name, history]);
 
   const handleEdit = (movie) => {
     history.push(`/movie/edit/${movie.id}`);

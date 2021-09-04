@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CustomButton from "../components/CustomButton";
 import { Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +27,7 @@ const FormLoadBanner = () => {
   };
   const [values, handleInputChange, handleFileChange, handleClickFile, reset] =
     useForm(initialState);
-  const { name, imageUrl, movieId } = values;
+  const { name } = values;
 
   const handleSubmit = (e) => {
     e.preventDefault();

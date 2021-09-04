@@ -8,11 +8,6 @@ import { getBanners } from "../redux/actions/bannerActions";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { useDispatch, useSelector } from "react-redux";
 
-const responsive = {
-  1024: { items: 3 },
-  1200: { items: 1 },
-};
-
 const Carousel = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -63,9 +58,8 @@ const Carousel = () => {
               </div>
             </div>
           ))}
-          // responsive={responsive}
           controlsStrategy="alternate"
-          // autoPlay={true}
+          autoPlay={true}
           disableButtonsControls={true}
           infinite={true}
           animationDuration={5000}
