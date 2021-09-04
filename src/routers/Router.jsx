@@ -38,7 +38,7 @@ const Routers = () => {
   return (
     <div>
       <Router>
-        <NavBar />
+        {/* <NavBar /> */}
         <Switch>
           <PublicRouter exact path="/login" component={Login} />
           <PublicRouter exact path="/signup" component={SignUp} />

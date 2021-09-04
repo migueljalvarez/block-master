@@ -145,6 +145,9 @@ footer {
 
 .modal-backdrop.show {
   opacity: 0.9 !important;
+  width: 100% !important;
+  height: 100% !important;
+
 }
 .modal-content {
   background-color: transparent !important;

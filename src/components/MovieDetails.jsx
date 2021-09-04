@@ -32,7 +32,7 @@ const MovieDetails = () => {
   };
   const gender = movie.gender || [""];
   return (
-    <>
+    <div className="d-flex">
       <Modal show={show} onHide={handleClose} size="lg">
         <Container className=" d-flex justify-content-end text-white">
           <CustomButton
@@ -51,7 +51,7 @@ const MovieDetails = () => {
           />
         </Container>
 
-        <Modal.Body className="d-flex">
+        <Modal.Body className="d-flex flex-wrap">
           <Container>
             <img
               src={movie.imageUrl}
@@ -98,29 +98,15 @@ const MovieDetails = () => {
             </div>
           </Container>
         </Modal.Body>
-
-        <Container>
-          <h2>Trailer</h2>
+        <h2>Trailer</h2>
+        <div className="d-flex flex-wrap justify-content-center">
           <YouTube
+            className=""
             videoId={movie.trailerUrl?.split("=").pop()}
-            opts={{
-              height: "390",
-              width: "640",
-            }}
           />
-          {/* <iframe
-            src={`https://www.youtube.com/embed/${}`}
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            className="w-100"
-            height="450"
-          ></iframe>
-         */}
-        </Container>
+        </div>
       </Modal>
-    </>
+    </div>
   );
 };
 export default MovieDetails;

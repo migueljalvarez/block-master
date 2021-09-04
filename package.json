@@ -33,8 +33,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "bulkCreateMovies": "node_modules/.bin/babel-node src/scripts/bulkCreateMovies.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -53,10 +52,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/node": "^7.15.4",
-    "@babel/preset-env": "^7.15.4",
-    "webpack-cli": "^4.8.0"
   }
 }
