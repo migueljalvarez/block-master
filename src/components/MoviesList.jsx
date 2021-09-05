@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import constants from "../helpers/constants";
 import { selectMovie } from "../redux/actions/moviesActions";
