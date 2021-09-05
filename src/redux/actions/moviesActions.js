@@ -12,13 +12,16 @@ const selectMovie = (movie) => {
   };
 };
 
-const getMovies = () => {
-  return async (dispatch) => {
-    const movies = await Movies.findAll();
-    dispatch({
-      type: types.movieList,
-      payload: movies,
-    });
+const getMovies = (opt) => {
+  return (dispatch) => {
+    switch (opt.action) {
+      case "next":
+        return Movies.next(dispatch, types);
+      case "previous":
+        return Movies.previous(dispatch, types);
+      default:
+        return Movies.findAll(dispatch, types);
+    }
   };
 };
 
@@ -94,23 +97,29 @@ const getMovieById = (id) => {
     dispatch(selectMovie({ ...movie, isUpdate: false }));
   };
 };
-const getTopMovies = () => {
-  return async (dispatch) => {
-    const movies = await Movies.findByRate("rate", ">", 5);
-    dispatch({
-      type: types.moviesTop,
-      payload: movies,
-    });
+const getTopMovies = (opt) => {
+  return (dispatch) => {
+    switch (opt?.action) {
+      case "next":
+        return Movies.next(dispatch, types, opt);
+      case "previous":
+        return Movies.previous(dispatch, types, opt);
+      default:
+        return Movies.findByRate(dispatch, types, { action: "top" });
+    }
   };
 };
 
-const getLeastMovies = () => {
-  return async (dispatch) => {
-    const movies = await Movies.findByRate("rate", "<=", 5);
-    dispatch({
-      type: types.moviesLeast,
-      payload: movies,
-    });
+const getLeastMovies = (opt) => {
+  return (dispatch) => {
+    switch (opt?.action) {
+      case "next":
+        return Movies.next(dispatch, types, opt);
+      case "previous":
+        return Movies.previous(dispatch, types, opt);
+      default:
+        return Movies.findByRate(dispatch, types, { action: "least" });
+    }
   };
 };
 

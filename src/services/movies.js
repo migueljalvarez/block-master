@@ -1,6 +1,9 @@
 import { db } from "../config/firebase/firebaseConfig";
 const collection = "Movies";
 
+let firtsDocument = null;
+let lastDocument = null;
+
 const search = (search, dispatch, types) => {
   return db.collection(`/${collection}`).onSnapshot((snapshot) => {
     const list = [];
@@ -19,44 +22,81 @@ const search = (search, dispatch, types) => {
     dispatch({
       type: types.searchTitle,
       payload: {
-        isSearch: true
-      }
+        isSearch: true,
+      },
     });
   });
 };
 
-const findByRate = async (field, op, value) => {
-  const movies = await db
-    .collection(`/${collection}`)
-    .where(field, op, value)
-    .limit(20)
-    .get();
-  const list = [];
-  movies.forEach((movie) => {
-    list.push({
-      id: movie.id,
-      ...movie.data(),
-    });
-  });
-  return list;
-};
-
-const findAll = async () => {
-  const movies = await db
+const findAll = (dispatch, types) => {
+  return db
     .collection(`/${collection}`)
     .orderBy("year", "desc")
     .limit(20)
-    .get();
-  const list = [];
-  movies.forEach((movie) => {
-    list.push({
-      id: movie.id,
-      ...movie.data(),
+    .onSnapshot((snapshot) => {
+      const movies = [];
+      lastDocument = snapshot.docs[snapshot.docs.length - 1];
+      firtsDocument = snapshot.docs[0];
+      snapshot.forEach((movie) => {
+        movies.push({
+          id: movie.id,
+          ...movie.data(),
+        });
+      });
+      dispatch({
+        type: types.movieList,
+        payload: movies,
+      });
     });
-  });
-  return list;
 };
 
+const findByRate = (dispatch, types, opt) => {
+  switch (opt.action) {
+    case "top":
+      return db
+        .collection(`/${collection}`)
+        .where("rate", ">", 5)
+        .limit(20)
+        .onSnapshot((snapshot) => {
+          const movies = [];
+          lastDocument = snapshot.docs[snapshot.docs.length - 1];
+          firtsDocument = snapshot.docs[0];
+          snapshot.forEach((movie) => {
+            movies.push({
+              id: movie.id,
+              ...movie.data(),
+            });
+          });
+
+          dispatch({
+            type: types.moviesTop,
+            payload: movies,
+          });
+        });
+    case "least":
+      return db
+        .collection(`/${collection}`)
+        .where("rate", "<=", 5)
+        .limit(20)
+        .onSnapshot((snapshot) => {
+          const movies = [];
+          lastDocument = snapshot.docs[snapshot.docs.length - 1];
+          firtsDocument = snapshot.docs[0];
+          snapshot.forEach((movie) => {
+            movies.push({
+              id: movie.id,
+              ...movie.data(),
+            });
+          });
+          dispatch({
+            type: types.moviesLeast,
+            payload: movies,
+          });
+        });
+    default:
+      break;
+  }
+};
 const findById = async (id) => {
   const movie = await db.doc(`/${collection}/${id}`).get();
   return movie.data();
@@ -109,12 +149,57 @@ const update = async (id, data) => {
     })
     .catch((error) => error);
 };
+
+const next = (dispatch, types) => {
+  return db
+    .collection(`/${collection}`)
+    .orderBy("year", "desc")
+    .startAfter(lastDocument)
+    .limit(20)
+    .onSnapshot((snapshot) => {
+      const movies = [];
+      snapshot.forEach((movie) => {
+        movies.push({
+          id: movie.id,
+          ...movie.data(),
+        });
+      });
+      dispatch({
+        type: types.movieList,
+        payload: movies,
+      });
+    });
+};
+const previous = (dispatch, types) => {
+  return db
+    .collection(`/${collection}`)
+    .orderBy("year", "desc")
+    .startAfter(firtsDocument)
+    .startAt(firtsDocument)
+    .limit(20)
+    .onSnapshot((snapshot) => {
+      const movies = [];
+      snapshot.docs.forEach((movie) => {
+        movies.push({
+          id: movie.id,
+          ...movie.data(),
+        });
+      });
+      dispatch({
+        type: types.movieList,
+        payload: movies,
+      });
+    });
+};
+
 const Movies = {
   findAll,
   findById,
   create,
   update,
-  findByRate,
   search,
+  next,
+  previous,
+  findByRate,
 };
 export default Movies;

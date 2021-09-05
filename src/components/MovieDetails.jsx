@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CustomButton from "../components/CustomButton";
-import { FaPlay, FaPlus, FaPen, FaTimes } from "react-icons/fa";
+import { FaPlay, FaPlus, FaTimes, FaTrash } from "react-icons/fa";
+
+import { ImPencil } from "react-icons/im";
 import { Modal, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { selectMovie } from "../redux/actions/moviesActions";
@@ -12,36 +14,50 @@ const MovieDetails = () => {
   const history = useHistory();
   const movie = useSelector((state) => state.movie);
   const [show, setShow] = useState(false);
-
+  const [loading, setLoading] = useState(true);
   const handleClose = () => {
     dispatch(selectMovie({}));
     setShow(false);
   };
 
   useEffect(() => {
-    if (movie.name) setShow(true);
-    history.listen((location) => {
-      if (location) {
-        setShow(false);
-      }
-    });
-  }, [movie.name, history]);
+    if (movie.id) {
+      setShow(true)
+      setLoading(true)
+    };
+    if (loading) {
+      history.listen((location) => {
+        if (location) {
+          setShow(false);
+        }
+      });
+    }
+    return () => setLoading(false);
+  }, [movie.id, history, loading]);
 
   const handleEdit = (movie) => {
     history.push(`/movie/edit/${movie.id}`);
   };
-  
+
   const gender = movie.gender || [""];
+  const trailerId = movie.trailerUrl ? movie.trailerUrl.split("=").pop() : "";
   return (
     <div className="d-flex">
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal show={movie.id ? show : false} onHide={handleClose} size="lg">
         <Container className=" d-flex justify-content-end text-white">
           <CustomButton
             className="bg-transparent text-white"
             type="button"
-            Icon={FaPen}
-            iconSize={15}
+            Icon={ImPencil}
+            iconSize={20}
             onClick={() => handleEdit(movie)}
+          />
+          <CustomButton
+            className="bg-transparent text-danger"
+            type="button"
+            Icon={FaTrash}
+            iconSize={20}
+            onClick={handleClose}
           />
           <CustomButton
             className="bg-transparent text-white"
@@ -99,13 +115,16 @@ const MovieDetails = () => {
             </div>
           </Container>
         </Modal.Body>
-        <h2>Trailer</h2>
-        <div className="d-flex flex-wrap justify-content-center">
-          <YouTube
-            className=""
-            videoId={movie.trailerUrl?.split("=").pop()}
-          />
-        </div>
+        {trailerId.length > 0 ? (
+          <>
+            <h2>Trailer</h2>
+            <div className="d-flex flex-wrap justify-content-center">
+              <YouTube className="" videoId={trailerId} />
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
       </Modal>
     </div>
   );

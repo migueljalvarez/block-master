@@ -4,13 +4,13 @@ import constants from "../helpers/constants";
 import { selectMovie } from "../redux/actions/moviesActions";
 import Rate from "./Rate";
 
-const MoviesList = memo(({ movies }) => {
+const MoviesList = ({ movies }) => {
   const dispacth = useDispatch();
   const handleSelectMovie = (e, data) => {
     e.preventDefault();
     dispacth(selectMovie(data));
   };
-  
+
   return (
     <div className="d-flex flex-wrap justify-content-center mb-5">
       {movies?.map((movie, index) => (
@@ -36,6 +36,6 @@ const MoviesList = memo(({ movies }) => {
       ))}
     </div>
   );
-});
+};
 
 export default MoviesList;

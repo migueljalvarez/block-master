@@ -23,6 +23,7 @@ import FormLoadBanner from "../components/FormLoadBanner";
 import FormMovie from "../views/FormMovie";
 import TopRatedMovies from "../views/TopRatedMovies";
 import LeastRatedMovies from "../views/LeastRatedMovies";
+import Carousel from "../components/Carousel";
 
 const Routers = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Routers = () => {
     <div>
       <Router>
         <NavBar />
+        <Carousel />
         <Switch>
           <PublicRouter exact path="/login" component={Login} />
           <PublicRouter exact path="/signup" component={SignUp} />

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Carousel from "../components/Carousel";
 import MovieDetails from "../components/MovieDetails";
 import MoviesList from "../components/MoviesList";
 import { getTopMovies } from "../redux/actions/moviesActions";
@@ -17,7 +16,6 @@ const TopRatedMovies = () => {
 
   return (
     <div>
-      <Carousel />
       <Container>
         <h1 className="fw-bold px-4 m-4">
           {search.isSearch
