@@ -16,6 +16,30 @@ import {
 import { useParams } from "react-router-dom";
 
 const { DEFAULT_MOVIE_POSTER, GENDERS_MOVIES } = constants;
+const customPrimary = "#fed941"
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    "&:hover": {
+      backgroundColor: "#f8ea6e",
+    },
+    color: "#000",
+    backgroundColor: state.isSelected ? customPrimary : "#fff",
+  }),
+
+  singleValue: (provided, state) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = "opacity 300ms";
+
+    return { ...provided, opacity, transition };
+  },
+  multiValue: (styles, { data }) => {
+    return {
+      ...styles,
+      backgroundColor: customPrimary,
+    };
+  },
+};
 
 const FormMovie = () => {
   const dispatch = useDispatch();
@@ -213,6 +237,7 @@ const FormMovie = () => {
 
             <Select
               isMulti
+              styles={customStyles}
               closeMenuOnSelect={false}
               hideSelectedOptions={false}
               components={{ Option, MultiValue, animatedComponents }}
