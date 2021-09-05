@@ -7,11 +7,16 @@ import { useDispatch } from "react-redux";
 // import { BiDoorOpen, BiX } from "react-icons/bi";
 // import { FaBars } from "react-icons/fa";
 // import ResposiveMenu from "./ResposiveMenu";
-import { searchMovies, getMovies } from "../redux/actions/moviesActions";
+import {
+  searchMovies,
+  getMovies,
+  getLeastMovies,
+  getTopMovies,
+} from "../redux/actions/moviesActions";
 import SearchBar from "./SearchBar";
 import { DefaultMenu } from "../helpers/defaultMenu";
 import DropDownMenu from "./DropDownMenu";
-
+import { types } from "../redux/types/types";
 const NavBar = () => {
   const dispatch = useDispatch();
   // const [isShowMenu, setIsShowMenu] = useState(false);
@@ -24,9 +29,22 @@ const NavBar = () => {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     if (e.target.value.length < 1) {
-      dispatch(getMovies());
-    } else {
-      dispatch(searchMovies(e.target.value));
+      switch (history.location.pathname) {
+        case "/movie/least":
+          dispatch(getLeastMovies());
+          break;
+        case "/movie/top":
+          dispatch(getTopMovies());
+          break;
+        default:
+          dispatch(getMovies());
+      }
+      dispatch({
+        type: types.searchTitle,
+        payload: {
+          isSearch: false,
+        },
+      });
     }
   };
 
@@ -69,7 +87,7 @@ const NavBar = () => {
 
         <SearchBar
           filter={searchMovies}
-          handleChange={handleSearch}
+          handleSearch={handleSearch}
           searchTerm={searchTerm}
           placeholder="Busca tu pelicula favorita"
         />

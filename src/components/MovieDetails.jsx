@@ -30,6 +30,7 @@ const MovieDetails = () => {
   const handleEdit = (movie) => {
     history.push(`/movie/edit/${movie.id}`);
   };
+  
   const gender = movie.gender || [""];
   return (
     <div className="d-flex">

@@ -82,16 +82,9 @@ const updateMovies = (id, data) => {
       });
   };
 };
-const searchMovies = (name) => {
+const searchMovies = (search) => {
   return (dispatch) => {
-    // search(name).then((data) => {
-    //   dispatch({
-    //     type: types.moviesSearch,
-    //     payload: {
-    //       results: data
-    //     }
-    //   });
-    // });
+    Movies.search(search, dispatch, types);
   };
 };
 
@@ -103,7 +96,7 @@ const getMovieById = (id) => {
 };
 const getTopMovies = () => {
   return async (dispatch) => {
-    const movies = await Movies.findMoviesByRate("rate", ">", 5);
+    const movies = await Movies.findByRate("rate", ">", 5);
     dispatch({
       type: types.moviesTop,
       payload: movies,
@@ -113,7 +106,7 @@ const getTopMovies = () => {
 
 const getLeastMovies = () => {
   return async (dispatch) => {
-    const movies = await Movies.findMoviesByRate("rate", "<=", 5);
+    const movies = await Movies.findByRate("rate", "<=", 5);
     dispatch({
       type: types.moviesLeast,
       payload: movies,

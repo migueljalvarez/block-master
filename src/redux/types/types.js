@@ -10,6 +10,8 @@ export const types = {
   movieEdit: "[Movie] Edit",
   moviesTop: "[Movie] Top",
   moviesLeast: "[Movie] Least",
+  search: "[Search] Movies",
+  searchTitle: "[Search] UI Title",
   uiSetError: "[UI] Set Error",
   uiRemoveError: "[UI] Remove Error",
   uiStartLoading: "[UI] Start Loading",

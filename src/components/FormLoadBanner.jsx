@@ -38,7 +38,7 @@ const FormLoadBanner = () => {
     }
     reset();
   };
-  console.log(values);
+
   const handleChangeSelect = (selected) => {
     setOptionSelected(selected);
     const e = {

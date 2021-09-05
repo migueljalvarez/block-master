@@ -9,7 +9,7 @@ import { getMovies } from "../redux/actions/moviesActions";
 const AllMovies = () => {
   const dispacth = useDispatch();
   const movies = useSelector((state) => state.movies);
-
+  const search = useSelector((state) => state.search);
   useEffect(() => {
     dispacth(getMovies());
   }, [dispacth]);
@@ -17,7 +17,9 @@ const AllMovies = () => {
     <div>
       <Carousel />
       <Container>
-        <h1 className="fw-bold px-4 m-4">Todas las Peliculas</h1>
+        <h1 className="fw-bold px-4 m-4">
+          {search.isSearch ? "Resultados de busqueda" : "Todas las Peliculas"}
+        </h1>
       </Container>
       <Container className="d-flex">
         <MoviesList movies={movies} />

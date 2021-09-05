@@ -13,13 +13,14 @@ const moviesReducer = (state = stateList, action) => {
     case types.movieList:
     case types.moviesTop:
     case types.moviesLeast:
+    case types.search:
       return action.payload;
     default:
       return state;
   }
 };
 
-const movieReducer = (state = {}, action) => {
+const movieReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.movie:
       return action.payload;

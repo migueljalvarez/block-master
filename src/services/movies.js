@@ -1,7 +1,31 @@
 import { db } from "../config/firebase/firebaseConfig";
 const collection = "Movies";
 
-const findMoviesByRate = async (field, op, value) => {
+const search = (search, dispatch, types) => {
+  return db.collection(`/${collection}`).onSnapshot((snapshot) => {
+    const list = [];
+    snapshot.forEach((movie) => {
+      list.push({
+        id: movie.id,
+        ...movie.data(),
+      });
+    });
+    const regexp = new RegExp(search, "i");
+    const movies = list.filter((movie) => regexp.test(movie.name));
+    dispatch({
+      type: types.search,
+      payload: movies,
+    });
+    dispatch({
+      type: types.searchTitle,
+      payload: {
+        isSearch: true
+      }
+    });
+  });
+};
+
+const findByRate = async (field, op, value) => {
   const movies = await db
     .collection(`/${collection}`)
     .where(field, op, value)
@@ -85,5 +109,12 @@ const update = async (id, data) => {
     })
     .catch((error) => error);
 };
-const Movies = { findAll, findById, create, update, findMoviesByRate };
+const Movies = {
+  findAll,
+  findById,
+  create,
+  update,
+  findByRate,
+  search,
+};
 export default Movies;

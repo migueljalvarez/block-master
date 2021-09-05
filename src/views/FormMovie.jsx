@@ -38,6 +38,7 @@ const FormMovie = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [values, handleInputChange, handleFileChange, handleClickFile, reset] =
     useForm(param.id ? movie : initialState);
+
   useEffect(() => {
     if (isLoading) {
       dispatch(getMovieById(param.id));
