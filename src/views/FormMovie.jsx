@@ -21,7 +21,7 @@ const customStyles = {
   option: (provided, state) => ({
     ...provided,
     "&:hover": {
-      backgroundColor: "#f8ea6e",
+      backgroundColor: customPrimary,
     },
     color: "#000",
     backgroundColor: state.isSelected ? customPrimary : "#fff",
@@ -33,7 +33,7 @@ const customStyles = {
 
     return { ...provided, opacity, transition };
   },
-  multiValue: (styles, { data }) => {
+  multiValue: (styles) => {
     return {
       ...styles,
       backgroundColor: customPrimary,

@@ -7,6 +7,19 @@ import { useParams } from "react-router-dom";
 import makeAnimated from "react-select/animated";
 import Select from "../components/Select";
 import { createBanner } from "../redux/actions/bannerActions";
+
+const customPrimary = "#fed941";
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    "&:hover": {
+      backgroundColor: customPrimary,
+    },
+    color: "#000",
+    backgroundColor: state.isSelected ? customPrimary : "#fff",
+  }),
+};
+
 const FormLoadBanner = () => {
   const dispatch = useDispatch();
   const param = useParams();
@@ -117,6 +130,7 @@ const FormLoadBanner = () => {
             <Form.Label>Movie</Form.Label>
 
             <Select
+              styles={customStyles}
               closeMenuOnSelect={true}
               hideSelectedOptions={false}
               components={{ animatedComponents }}
