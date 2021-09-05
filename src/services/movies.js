@@ -93,6 +93,46 @@ const findByRate = (dispatch, types, opt) => {
             payload: movies,
           });
         });
+    case "nextPage":
+      return db
+        .collection(`/${collection}`)
+        .where("rate", ">", 5)
+        .limit(20)
+        .orderBy("rate", "asc")
+        .startAfter(lastDocument)
+        .onSnapshot((snapshot) => {
+          const movies = [];
+          snapshot.forEach((movie) => {
+            movies.push({
+              id: movie.id,
+              ...movie.data(),
+            });
+          });
+          dispatch({
+            type: types.moviesLeast,
+            payload: movies,
+          });
+        });
+    case "prevPage":
+      return db
+        .collection(`/${collection}`)
+        .where("rate", "<=", 5)
+        .limit(20)
+        .orderBy("rate", "asc")
+        .startAfter(lastDocument)
+        .onSnapshot((snapshot) => {
+          const movies = [];
+          snapshot.forEach((movie) => {
+            movies.push({
+              id: movie.id,
+              ...movie.data(),
+            });
+          });
+          dispatch({
+            type: types.moviesLeast,
+            payload: movies,
+          });
+        });
     default:
       break;
   }

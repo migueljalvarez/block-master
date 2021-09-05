@@ -100,10 +100,10 @@ const getMovieById = (id) => {
 const getTopMovies = (opt) => {
   return (dispatch) => {
     switch (opt?.action) {
-      case "next":
-        return Movies.next(dispatch, types, opt);
-      case "previous":
-        return Movies.previous(dispatch, types, opt);
+      case "nextPage":
+        return Movies.findByRate(dispatch, types, { action: "nextPage" });
+      case "prevPage":
+        return Movies.findByRate(dispatch, types, { action: "prevPage" });
       default:
         return Movies.findByRate(dispatch, types, { action: "top" });
     }
