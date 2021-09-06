@@ -27,7 +27,7 @@ const DropDownMenu = () => {
         <Dropdown.Item
           as={Link}
           key={index}
-          disabled={isDisabled}
+          disabled={user.isAuthenticated}
           to={item.path}
         >
           {item.label}
@@ -39,7 +39,7 @@ const DropDownMenu = () => {
           as={Link}
           key={index}
           role="button"
-          disabled={!user.isAuthenticated}
+          disabled={user.isAuthenticated}
           onClick={handleLogout}
           to="/"
         >
@@ -51,7 +51,7 @@ const DropDownMenu = () => {
         <Dropdown.Item
           as={Link}
           key={index}
-          disabled={isDisabled}
+          disabled={!user.isAuthenticated}
           to={item.path}
         >
           {item.label}
