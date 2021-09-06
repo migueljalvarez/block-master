@@ -73,8 +73,8 @@ const FormLoadBanner = () => {
         >
           <h1>
             {param.id
-              ? "Actualizar informacion de la pelicula"
-              : "Carga una nueva pelicula"}
+              ? "Actualizar información del banner"
+              : "Carga un nuevo banner"}
           </h1>
           <Form.Group>
             <Form.Label>Nombre:</Form.Label>

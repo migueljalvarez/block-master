@@ -6,7 +6,7 @@ import MovieDetails from "../components/MovieDetails";
 import MoviesList from "../components/MoviesList";
 import { getMovies } from "../redux/actions/moviesActions";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
+import Carousel from "../components/Carousel"
 const AllMovies = () => {
   const dispacth = useDispatch();
   const movies = useSelector((state) => state.movies);
@@ -40,6 +40,7 @@ const AllMovies = () => {
 
   return (
     <div>
+      <Carousel />
       <Container>
         <h1 className="fw-bold px-4 m-4">
           {search.isSearch ? "Resultados de busqueda" : "Todas las Peliculas"}

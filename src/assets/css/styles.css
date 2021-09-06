@@ -220,11 +220,13 @@ and left sides of the text */
 }
 
 #responsive-menu {
-  height: 100vh;
-  position: fixed;
+  height: 100%;
+  position: absolute;
   width: 100%;
   z-index: 1;
+  top: 0;
 }
+
 #closeResponsiveMenu {
   float: right;
   margin: 20px;
@@ -257,6 +259,10 @@ and left sides of the text */
     flex-direction: column !important;
   }
 
+  .custom-btn-social {
+    width: 100% !important;
+  }
+  .custom-btn-social,
   .custom-btn-banner {
     font-size: 0 !important;
   }
@@ -283,8 +289,16 @@ and left sides of the text */
   .dropDownMenu {
     display: none !important;
   }
+  .custom-btn-social {
+    width: 100% !important;
+  }
+  .custom-btn-social,
   .custom-btn-banner {
     font-size: 0 !important;
+  }
+  .btn-banner {
+    left: 20px !important;
+    bottom: 20px !important;
   }
   .cover {
     width: 100%;
@@ -307,11 +321,11 @@ and left sides of the text */
   }
 
   .navContainer {
-    justify-content: space-between !important;
+    justify-content: center !important;
   }
 
   .search {
-    width: 350px !important;
+    width: 100% !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
   }
@@ -358,6 +372,9 @@ and left sides of the text */
     margin-left: 2px !important;
     margin-right: 6px !important;
   }
+  .movieInfo {
+    flex-direction: column !important;
+  }
   #toggleMenu {
     display: none;
   }
@@ -366,5 +383,8 @@ and left sides of the text */
 @media screen and (min-width: 1366px) {
   #toggleMenu {
     display: none;
+  }
+  .movieInfo {
+    flex-direction: column !important;
   }
 }

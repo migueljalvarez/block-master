@@ -6,6 +6,7 @@ import MoviesList from "../components/MoviesList";
 import { getTopMovies } from "../redux/actions/moviesActions";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import CustomButton from "../components/CustomButton";
+import Carousel from "../components/Carousel";
 
 const TopRatedMovies = () => {
   const dispacth = useDispatch();
@@ -32,6 +33,7 @@ const TopRatedMovies = () => {
 
   return (
     <div>
+      <Carousel />
       <Container>
         <h1 className="fw-bold px-4 m-4">
           {search.isSearch
@@ -40,7 +42,9 @@ const TopRatedMovies = () => {
         </h1>
       </Container>
       <Container className="d-flex justify-content-center">
-        <MoviesList movies={movies.sort((a, b) => b.rate - a.rate && b.year - a.year)} />
+        <MoviesList
+          movies={movies.sort((a, b) => b.rate - a.rate && b.year - a.year)}
+        />
       </Container>
       <Container className="m-auto d-flex justify-content-around pb-5">
         <CustomButton

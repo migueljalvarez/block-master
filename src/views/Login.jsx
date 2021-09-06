@@ -40,7 +40,7 @@ const Login = () => {
 
   const SocialsButtons = () => {
     return (
-      <Container className="d-flex justify-content-between my-1  m-auto">
+      <Container className="d-flex justify-content-between  m-auto">
         <CustomButton
           custom="google"
           value={SIGN_IN_WITH_GOOGLE}
@@ -49,7 +49,7 @@ const Login = () => {
           iconSize={20}
           onClick={handleloginGoogle}
           margin="5px"
-          size="lg"
+          className="custom-btn-social"
         />
         <CustomButton
           custom="facebook"
@@ -59,7 +59,7 @@ const Login = () => {
           iconSize={20}
           onClick={handleLoginWithFacebook}
           margin="5px"
-          size="lg"
+          className="custom-btn-social"
         />
       </Container>
     );
@@ -74,7 +74,7 @@ const Login = () => {
     >
       <h1 className="text-center my-5">{SIGN_IN}</h1>
 
-      <Form className="col-6 m-auto" onSubmit={handleSubmit} method="POST">
+      <Form className="m-auto" onSubmit={handleSubmit} method="POST">
         <SocialsButtons />
         <div className="divider">Or</div>
         <Form.Group className="mb-3" controlId="formBasicEmail">

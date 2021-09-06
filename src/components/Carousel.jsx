@@ -54,7 +54,7 @@ const Carousel = () => {
             </div>
           ))}
           controlsStrategy="alternate"
-          // autoPlay={true}
+          autoPlay={true}
           disableButtonsControls={true}
           infinite={true}
           animationDuration={5000}
