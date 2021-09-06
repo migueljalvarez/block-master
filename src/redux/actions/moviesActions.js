@@ -100,10 +100,10 @@ const getMovieById = (id) => {
 const getTopMovies = (opt) => {
   return (dispatch) => {
     switch (opt?.action) {
-      case "nextPage":
-        return Movies.findByRate(dispatch, types, { action: "nextPage" });
-      case "prevPage":
-        return Movies.findByRate(dispatch, types, { action: "prevPage" });
+      case "next":
+        return Movies.findByRate(dispatch, types, { action: "nextTopPage" });
+      case "prev":
+        return Movies.findByRate(dispatch, types, { action: "prevTopPage" });
       default:
         return Movies.findByRate(dispatch, types, { action: "top" });
     }
@@ -114,9 +114,9 @@ const getLeastMovies = (opt) => {
   return (dispatch) => {
     switch (opt?.action) {
       case "next":
-        return Movies.next(dispatch, types, opt);
-      case "previous":
-        return Movies.previous(dispatch, types, opt);
+        return Movies.findByRate(dispatch, types, { action: "nextLeastPage" });
+      case "prev":
+        return Movies.findByRate(dispatch, types, { action: "prevLeastPage" });
       default:
         return Movies.findByRate(dispatch, types, { action: "least" });
     }

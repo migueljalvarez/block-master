@@ -18,14 +18,14 @@ const TopRatedMovies = () => {
 
   const handleNext = () => {
     const opt = {
-      action: "nextPage",
+      action: "next",
     };
     dispacth(getTopMovies(opt));
   };
 
   const handlePrevious = () => {
     const opt = {
-      action: "prevPage",
+      action: "prev",
     };
     dispacth(getTopMovies(opt));
   };
@@ -40,7 +40,7 @@ const TopRatedMovies = () => {
         </h1>
       </Container>
       <Container className="d-flex">
-        <MoviesList movies={movies.sort((a, b) => b.rate - a.rate)} />
+        <MoviesList movies={movies.sort((a, b) => b.rate - a.rate && b.year - a.year)} />
       </Container>
       <Container className="m-auto d-flex justify-content-around pb-5">
         <CustomButton

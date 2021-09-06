@@ -32,7 +32,7 @@ const findAll = (dispatch, types) => {
   return db
     .collection(`/${collection}`)
     .orderBy("year", "desc")
-    .limit(20)
+    .limit(15)
     .onSnapshot((snapshot) => {
       const movies = [];
       lastDocument = snapshot.docs[snapshot.docs.length - 1];
@@ -56,7 +56,7 @@ const findByRate = (dispatch, types, opt) => {
       return db
         .collection(`/${collection}`)
         .where("rate", ">", 5)
-        .limit(20)
+        .limit(15)
         .onSnapshot((snapshot) => {
           const movies = [];
           lastDocument = snapshot.docs[snapshot.docs.length - 1];
@@ -77,7 +77,7 @@ const findByRate = (dispatch, types, opt) => {
       return db
         .collection(`/${collection}`)
         .where("rate", "<=", 5)
-        .limit(20)
+        .limit(15)
         .onSnapshot((snapshot) => {
           const movies = [];
           lastDocument = snapshot.docs[snapshot.docs.length - 1];
@@ -93,12 +93,12 @@ const findByRate = (dispatch, types, opt) => {
             payload: movies,
           });
         });
-    case "nextPage":
+    case "nextTopPage":
       return db
         .collection(`/${collection}`)
         .where("rate", ">", 5)
-        .limit(20)
-        .orderBy("rate", "asc")
+        .limit(15)
+        .orderBy("rate", "desc")
         .startAfter(lastDocument)
         .onSnapshot((snapshot) => {
           const movies = [];
@@ -113,13 +113,56 @@ const findByRate = (dispatch, types, opt) => {
             payload: movies,
           });
         });
-    case "prevPage":
+    case "prevTopPage":
+      return db
+        .collection(`/${collection}`)
+        .where("rate", ">", 5)
+        .limit(15)
+        .orderBy("rate", "asc")
+        .startAfter(firtsDocument)
+        .startAt(firtsDocument)
+
+        .onSnapshot((snapshot) => {
+          const movies = [];
+          snapshot.forEach((movie) => {
+            movies.push({
+              id: movie.id,
+              ...movie.data(),
+            });
+          });
+          dispatch({
+            type: types.moviesLeast,
+            payload: movies,
+          });
+        });
+    case "nextLeastPage":
       return db
         .collection(`/${collection}`)
         .where("rate", "<=", 5)
-        .limit(20)
-        .orderBy("rate", "asc")
+        .limit(15)
+        .orderBy("rate", "desc")
         .startAfter(lastDocument)
+        .onSnapshot((snapshot) => {
+          const movies = [];
+          snapshot.forEach((movie) => {
+            movies.push({
+              id: movie.id,
+              ...movie.data(),
+            });
+          });
+          dispatch({
+            type: types.moviesLeast,
+            payload: movies,
+          });
+        });
+    case "prevLeastPage":
+      return db
+        .collection(`/${collection}`)
+        .where("rate", "<=", 5)
+        .limit(15)
+        .orderBy("rate", "asc")
+        .startAfter(firtsDocument)
+        .startAt(firtsDocument)
         .onSnapshot((snapshot) => {
           const movies = [];
           snapshot.forEach((movie) => {
@@ -195,7 +238,7 @@ const next = (dispatch, types) => {
     .collection(`/${collection}`)
     .orderBy("year", "desc")
     .startAfter(lastDocument)
-    .limit(20)
+    .limit(15)
     .onSnapshot((snapshot) => {
       const movies = [];
       snapshot.forEach((movie) => {
@@ -216,7 +259,7 @@ const previous = (dispatch, types) => {
     .orderBy("year", "desc")
     .startAfter(firtsDocument)
     .startAt(firtsDocument)
-    .limit(20)
+    .limit(15)
     .onSnapshot((snapshot) => {
       const movies = [];
       snapshot.docs.forEach((movie) => {
