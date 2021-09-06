@@ -92,7 +92,7 @@ footer {
 .search button {
   text-align: center;
   width: 72px;
-  border-radius: 0px 2px 2px 0px;
+  /* border-radius: 0px 2px 2px 0px; */
   background-color: #fed941;
   margin: 0;
   border: none;
@@ -146,7 +146,6 @@ footer {
   opacity: 0.9 !important;
   width: 100% !important;
   height: 100% !important;
-
 }
 .modal-content {
   background-color: transparent !important;
@@ -199,14 +198,173 @@ and left sides of the text */
   height: 310px;
   margin: auto;
 }
-@media screen and (min-width: 320px) and (max-width: 767px) {
+#logo {
+  width: 130px;
+}
+
+.navItem:hover {
+  color: #fed941 !important;
+}
+
+#toggleMenu {
+  border-radius: 2px 0px 0px 2px !important;
+}
+
+.show {
+  display: "contents";
+}
+
+.hide {
+  display: none;
+  right: 10000px;
+}
+
+#responsive-menu {
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+#closeResponsiveMenu {
+  float: right;
+  margin: 20px;
+}
+
+.btn-banner {
+  position: absolute;
+  bottom: 30px;
+  left: 100px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 374px) {
+  .dropDownMenu {
+    display: none !important;
+  }
+  .cover {
+    width: 100%;
+    height: 150px;
+  }
+  .btn-banner {
+    left: 20px !important;
+    bottom: 20px !important;
+  }
+
+  .containerBrand {
+    display: none !important;
+  }
+  .movieForm,
+  .movieInfo {
+    flex-direction: column !important;
+  }
+
+  .custom-btn-banner {
+    font-size: 0 !important;
+  }
+
+  #nav-container-main {
+    justify-content: space-between !important;
+  }
+
+  .search {
+    width: 300px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .search input {
+    border: none !important;
+    border-radius: 0 !important;
+  }
+  #toggleMenu {
+    border: none !important;
+    border-radius: 2px 0px 0px 2px !important;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .dropDownMenu {
+    display: none !important;
+  }
+  .custom-btn-banner {
+    font-size: 0 !important;
+  }
   .cover {
     width: 100%;
     height: 200px;
   }
+  .movieForm,
+  .movieInfo {
+    flex-direction: column !important;
+  }
+  .containerBrand {
+    display: none !important;
+  }
+
+  .navItem {
+    display: none !important;
+  }
+
+  #logo {
+    display: none !important;
+  }
+
+  .navContainer {
+    justify-content: space-between !important;
+  }
+
+  .search {
+    width: 350px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .search input {
+    border: none !important;
+    border-radius: 0 !important;
+  }
+  #toggleMenu {
+    border: none !important;
+    border-radius: 2px 0px 0px 2px !important;
+  }
 }
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .cover {
     width: 100%;
+  }
+  .navItem {
+    display: none !important;
+  }
+  .search {
+    width: 400px !important;
+    margin-left: 0px !important;
+  }
+  .search input {
+    border: none !important;
+    border-radius: 0 !important;
+  }
+  .movieForm,
+  .movieInfo {
+    flex-direction: column !important;
+  }
+  #toggleMenu {
+    border-radius: 2px 0px 0px 2px !important;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .search {
+    width: 300px !important;
+    margin-left: 0px !important;
+  }
+  .navItem {
+    margin-left: 2px !important;
+    margin-right: 6px !important;
+  }
+  #toggleMenu {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  #toggleMenu {
+    display: none;
   }
 }

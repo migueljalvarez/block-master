@@ -29,12 +29,7 @@ const Carousel = () => {
                 alt={item.name}
               />
               <div
-                className="d-flex"
-                style={{
-                  position: "absolute",
-                  bottom: "30px",
-                  left: "100px",
-                }}
+                className="d-flex btn-banner"
               >
                 <CustomButton
                   custom="primary"
@@ -43,7 +38,7 @@ const Carousel = () => {
                   Icon={FaPlay}
                   iconSize="15"
                   iconClassName="mx-1"
-                  className="text-uppercase bold p-3"
+                  className="text-uppercase bold p-3 custom-btn-banner"
                 />
                 <CustomButton
                   custom="dark"
@@ -53,13 +48,13 @@ const Carousel = () => {
                   Icon={FaPlus}
                   iconSize="15"
                   iconClassName="mx-1"
-                  className="text-uppercase bold p-3"
+                  className="text-uppercase bold p-3 custom-btn-banner"
                 />
               </div>
             </div>
           ))}
           controlsStrategy="alternate"
-          autoPlay={true}
+          // autoPlay={true}
           disableButtonsControls={true}
           infinite={true}
           animationDuration={5000}

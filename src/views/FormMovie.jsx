@@ -129,7 +129,7 @@ const FormMovie = () => {
   };
 
   return (
-    <Container className="d-flex">
+    <Container className="d-flex movieForm">
       <Container>
         <Form
           className="d-flex flex-column"
@@ -268,7 +268,7 @@ const FormMovie = () => {
         </Form>
       </Container>
       <Container>
-        <Container className="d-flex w-auto">
+        <Container className="d-flex w-auto movieInfo">
           <Container className="flex-column">
             <h1>{name || "Example Title"}</h1>
             <p>

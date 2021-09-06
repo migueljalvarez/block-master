@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 // import { BiDoorOpen, BiX } from "react-icons/bi";
 // import { FaBars } from "react-icons/fa";
-// import ResposiveMenu from "./ResposiveMenu";
+import ResponsiveMenu from "./ResponsiveMenu";
 import {
   searchMovies,
   getMovies,
@@ -19,11 +19,12 @@ import DropDownMenu from "./DropDownMenu";
 import { types } from "../redux/types/types";
 const NavBar = () => {
   const dispatch = useDispatch();
-  // const [isShowMenu, setIsShowMenu] = useState(false);
+  const [isShowMenu, setIsShowMenu] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  // const handleToggleMenu = () => {
-  //   setIsShowMenu(!isShowMenu);
-  // };
+  const handleToggleMenu = (e) => {
+    e.preventDefault()
+    setIsShowMenu(!isShowMenu);
+  };
 
   const history = useHistory();
   const handleSearch = (e) => {
@@ -51,38 +52,29 @@ const NavBar = () => {
   useEffect(() => {
     return history.listen((location) => {
       if (location) {
-        // setIsShowMenu(false);
+        setIsShowMenu(false);
       }
     });
   }, [history]);
 
   return (
     <div className="w-100">
-      <Navbar id="nav-contarner-main" bg="black" className="container ">
-        {/* <span
-          id="toggle-menu"
-          className="text-white bg-danger mx-4"
-          onClick={handleToggleMenu}
-        >
-          {isShowMenu ? <BiX size={25} /> : <FaBars size={25} />}
-        </span> */}
-        <Container id="nav-contarner-brand">
+      <Navbar id="nav-contairner-main" bg="black" className="container navContainer ">
+        <Container id="nav-contairner-brand" className="containerBrand">
           <Navbar.Brand href="/">
             <img
+              id="logo"
               alt="block master"
               src={logo}
-              width="130"
               className="d-inline-block align-top"
             />
           </Navbar.Brand>
-          <Navbar.Collapse>
-            <Nav>
-              <DefaultMenu
-                className="text-white bold text-decoration-none mx-4"
-                currentMenu={menu}
-              />
-            </Nav>
-          </Navbar.Collapse>
+          <Nav>
+            <DefaultMenu
+              className="text-white bold text-decoration-none mx-4 navItem"
+              currentMenu={menu}
+            />
+          </Nav>
         </Container>
 
         <SearchBar
@@ -90,17 +82,16 @@ const NavBar = () => {
           handleSearch={handleSearch}
           searchTerm={searchTerm}
           placeholder="Busca tu pelicula favorita"
+          handleToggle={handleToggleMenu}
         />
-        <DropDownMenu />
+        <DropDownMenu/>
       </Navbar>
 
-      {/* <ResposiveMenu
-        user={user}
+      <ResponsiveMenu
         isShow={isShowMenu}
         items={menu}
-        handleLogout={handleLogout}
         handleToggleMenu={handleToggleMenu}
-      /> */}
+      />
     </div>
   );
 };

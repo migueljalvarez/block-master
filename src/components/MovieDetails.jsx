@@ -15,6 +15,7 @@ const MovieDetails = () => {
   const movie = useSelector((state) => state.movie);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
+  
   const handleClose = () => {
     dispatch(selectMovie({}));
     setShow(false);

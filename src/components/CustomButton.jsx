@@ -18,7 +18,7 @@ const CustomButton = ({
     <>
       <button
         type={type}
-        className={`${className} custom-btn custom-btn-${custom} custom-btn-${size} custom-border-line-${borderColor}`}
+        className={`${className} custom-btn custom-btn-${custom} custom-btn-${size} custom-border-line-${borderColor} `}
         onClick={onClick}
         style={{
           display: "flex",

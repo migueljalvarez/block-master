@@ -62,12 +62,12 @@ const DropDownMenu = () => {
   });
 
   return (
-    <>
+    <div className="dropDownMenu d-flex">
       <Avatar width="40px" user={user} />
       <DropdownButton variant="black" title="">
         {items}
       </DropdownButton>
-    </>
+    </div>
   );
 };
 
