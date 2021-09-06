@@ -2,6 +2,7 @@ import { types } from "../types/types";
 
 const initialState = {
   isSearch: false,
+  searchTerm: "",
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -9,6 +10,7 @@ const searchReducer = (state = initialState, action) => {
     case types.searchTitle:
       return {
         isSearch: action.payload.isSearch,
+        searchTerm: action.payload.searchTerm,
       };
     default:
       return state;

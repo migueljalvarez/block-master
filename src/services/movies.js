@@ -23,6 +23,7 @@ const search = (search, dispatch, types) => {
       type: types.searchTitle,
       payload: {
         isSearch: true,
+        searchTerm: search
       },
     });
   });

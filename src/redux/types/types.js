@@ -12,6 +12,7 @@ export const types = {
   moviesLeast: "[Movie] Least",
   search: "[Search] Movies",
   searchTitle: "[Search] UI Title",
+  searchTerm: "[Search] Term",
   uiSetError: "[UI] Set Error",
   uiRemoveError: "[UI] Remove Error",
   uiStartLoading: "[UI] Start Loading",

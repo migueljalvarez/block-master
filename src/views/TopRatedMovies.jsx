@@ -39,7 +39,7 @@ const TopRatedMovies = () => {
             : "Peliculas mas valoradas"}
         </h1>
       </Container>
-      <Container className="d-flex">
+      <Container className="d-flex justify-content-center">
         <MoviesList movies={movies.sort((a, b) => b.rate - a.rate && b.year - a.year)} />
       </Container>
       <Container className="m-auto d-flex justify-content-around pb-5">

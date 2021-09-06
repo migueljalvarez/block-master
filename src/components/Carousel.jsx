@@ -47,7 +47,7 @@ const Carousel = () => {
                 />
                 <CustomButton
                   custom="dark"
-                  value="Ver más tarde"
+                  value="Ver Despues"
                   margin="0px 5px"
                   borderColor="primary"
                   Icon={FaPlus}

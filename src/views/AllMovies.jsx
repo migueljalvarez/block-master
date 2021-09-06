@@ -45,7 +45,7 @@ const AllMovies = () => {
           {search.isSearch ? "Resultados de busqueda" : "Todas las Peliculas"}
         </h1>
       </Container>
-      <Container className="d-flex">
+      <Container className="d-flex justify-content-center">
         <MoviesList movies={movies} />
       </Container>
       <Container className="m-auto d-flex justify-content-around pb-5">

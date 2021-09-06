@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Form, FormControl } from "react-bootstrap";
-
 import searchIcon from "../assets/svg/search.svg";
 
 const SearchBar = ({ filter, handleSearch, searchTerm, placeholder }) => {
