@@ -29,15 +29,14 @@ const ResponsiveMenu = ({ items, isShow, handleToggleMenu }) => {
   );
 
   const dropMenu = [];
-  let isDisabled = false;
+
   dropdownMenu.map((item, index) => {
     if (item.label === SIGN_IN || item.label === "Registrarse") {
-      isDisabled = true;
       dropMenu.push(
         <Link
           key={index}
           className="text-white text-decoration-none m-2"
-          disabled={isDisabled}
+          disabled={user.isAuthenticated}
           to={item.path}
         >
           {item.label}
@@ -48,7 +47,7 @@ const ResponsiveMenu = ({ items, isShow, handleToggleMenu }) => {
         <Link
           key={index}
           role="button"
-          disabled={!user.isAuthenticated}
+          disabled={user.isAuthenticated}
           onClick={handleLogout}
           className="text-white text-decoration-none m-2"
           to="/"
@@ -61,7 +60,7 @@ const ResponsiveMenu = ({ items, isShow, handleToggleMenu }) => {
         <Link
           key={index}
           className="text-white text-decoration-none m-2"
-          disabled={isDisabled}
+          disabled={!user.isAuthenticated}
           to={item.path}
         >
           {item.label}

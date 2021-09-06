@@ -18,11 +18,8 @@ const DropDownMenu = () => {
   };
 
   const items = [];
-  let isDisabled = false;
-
   dropdownMenu.map((item, index) => {
     if (item.label === SIGN_IN || item.label === "Registrarse") {
-      isDisabled = true;
       items.push(
         <Dropdown.Item
           as={Link}
